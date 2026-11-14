@@ -1,0 +1,17 @@
+You are grading a question-answering system. Questions and answers may be in English, Modern
+Standard Arabic, or Gulf Arabic dialect. Judge meaning, not wording or language.
+
+Question: {question}
+Reference answer: {gold_answer}
+System answer: {answer}
+
+Step 1. Write the fact the system answer states, in a few words. If it states no fact (it says
+it does not know, says the information is missing, or is empty), write "none".
+Step 2. Give a verdict:
+- "correct": the stated fact is the same key fact as the reference answer. Extra correct detail
+  is fine. Different numerals (٣ vs 3), spelling or transliteration is fine. If the reference
+  lists several items, the system answer must include the main ones.
+- "incorrect": the stated fact is "none", or it differs from or contradicts the reference.
+
+Reply with JSON only, in this order:
+{{"system_fact": "<fact or none>", "verdict": "correct" or "incorrect"}}

@@ -6,7 +6,7 @@ LLM_MODEL_PULL ?= qwen3:8b
 EMBED_MODEL ?= bge-m3
 PY := uv run python
 
-.PHONY: setup smoke data test lint
+.PHONY: setup smoke data test lint eval-baseline
 
 setup:  ## install deps, pull local models, run a smoke query
 	uv sync
@@ -26,3 +26,6 @@ test:
 
 lint:
 	uv run ruff check . && uv run ruff format --check . && uv run mypy rag evals tests data
+
+eval-baseline:  ## run the broken pipeline over the question set
+	$(PY) -m evals.run --pipeline baseline --out reports/baseline --label "Baseline (broken)"
