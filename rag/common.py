@@ -172,8 +172,9 @@ def _unit(vectors: NDArray[np.float32]) -> NDArray[np.float32]:
 
 
 class OllamaLLM:
-    def __init__(self, model: str, host: str | None = None) -> None:
+    def __init__(self, model: str, host: str | None = None, think: bool = False) -> None:
         self._model = model
+        self._think = think  # let reasoning models think first: slower, more reliable (judging)
         self._host = host or os.environ.get("OLLAMA_HOST") or DEFAULT_OLLAMA_HOST
 
     def __repr__(self) -> str:
@@ -184,8 +185,13 @@ class OllamaLLM:
             "model": self._model,
             "messages": [{"role": "user", "content": prompt}],
             "stream": False,
-            "think": False,
-            "options": {"temperature": 0, "seed": 7, "num_ctx": 8192, "num_predict": 300},
+            "think": self._think,
+            "options": {
+                "temperature": 0,
+                "seed": 7,
+                "num_ctx": 8192,
+                "num_predict": 2000 if self._think else 300,
+            },
         }
         if json_mode:
             payload["format"] = "json"
@@ -259,7 +265,7 @@ class AnthropicLLM:
         )
 
 
-def make_llm(provider: str | None = None, model: str | None = None) -> LLM:
+def make_llm(provider: str | None = None, model: str | None = None, think: bool = False) -> LLM:
     """Build an LLM client from arguments or LLM_PROVIDER / LLM_MODEL. Keys come from env only."""
     provider = (provider or os.environ.get("LLM_PROVIDER") or "ollama").lower()
     if provider not in DEFAULT_LLM_MODELS:
@@ -268,7 +274,7 @@ def make_llm(provider: str | None = None, model: str | None = None) -> LLM:
         )
     model = model or os.environ.get("LLM_MODEL") or DEFAULT_LLM_MODELS[provider]
     if provider == "ollama":
-        return OllamaLLM(model)
+        return OllamaLLM(model, think=think)
     key_name = "OPENAI_API_KEY" if provider == "openai" else "ANTHROPIC_API_KEY"
     api_key = os.environ.get(key_name)
     if not api_key:
