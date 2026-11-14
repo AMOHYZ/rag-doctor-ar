@@ -6,7 +6,7 @@ LLM_MODEL_PULL ?= qwen3:8b
 EMBED_MODEL ?= bge-m3
 PY := uv run python
 
-.PHONY: setup smoke data test lint eval-baseline
+.PHONY: setup smoke data test lint eval-baseline eval-fixed report
 
 setup:  ## install deps, pull local models, run a smoke query
 	uv sync
@@ -29,3 +29,9 @@ lint:
 
 eval-baseline:  ## run the broken pipeline over the question set
 	$(PY) -m evals.run --pipeline baseline --out reports/baseline --label "Baseline (broken)"
+
+eval-fixed:  ## run the fixed pipeline over the question set
+	$(PY) -m evals.run --pipeline fixed --out reports/fixed --label "Fixed"
+
+report:  ## before/after table -> reports/before_after.md and the README results block
+	$(PY) -m evals.report
