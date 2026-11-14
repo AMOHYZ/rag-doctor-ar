@@ -17,8 +17,12 @@ setup:  ## install deps, pull local models, run a smoke query
 smoke:  ## embed three tiny docs and answer one question end to end
 	$(PY) -m rag.smoke
 
+data:  ## download the pinned public corpus into data/corpus.jsonl
+	uv sync
+	$(PY) -m data.fetch
+
 test:
 	uv run pytest -q
 
 lint:
-	uv run ruff check . && uv run ruff format --check . && uv run mypy rag evals tests
+	uv run ruff check . && uv run ruff format --check . && uv run mypy rag evals tests data
