@@ -46,6 +46,16 @@ def headline_table(before: Summary, after: Summary, top_k: int) -> str:
     return "\n".join(lines)
 
 
+def headline_sentence(before: Summary, after: Summary) -> str:
+    def change(split: str) -> str:
+        return f"{before[split]['correctness']:.0%} → {after[split]['correctness']:.0%}"
+
+    return (
+        f"**Answer correctness: {change('overall')} overall** "
+        f"(MSA {change('msa')}, Gulf dialect {change('gulf')}, English {change('en')})."
+    )
+
+
 def stage_table(stages: Sequence[tuple[str, Summary]], top_k: int) -> str:
     lines = [
         f"| Stage | Split | Hit@{top_k} | Correct | Grounded | Answered | Tok/q | p50 s | p95 s |",
@@ -84,7 +94,7 @@ def main() -> None:
     top_k = int(meta["top_k"])
     headline = headline_table(stages[0][1], stages[-1][1], top_k)
     caption = (
-        f"Before → after, {available[0][0].lower()} vs {available[-1][0].lower()}. "
+        f"Before = {available[0][0]}, after = {available[-1][0]}. "
         f"{meta['questions']} questions, LLM and judge `{meta['llm']}`, "
         f"embeddings `{meta['embeddings']}`, run locally."
     )
@@ -95,8 +105,10 @@ def main() -> None:
         "questions where the system made a claim instead of abstaining.\n",
         encoding="utf-8",
     )
+    sentence = headline_sentence(stages[0][1], stages[-1][1])
     README.write_text(
-        inject(README.read_text(encoding="utf-8"), f"{headline}\n\n{caption}"), encoding="utf-8"
+        inject(README.read_text(encoding="utf-8"), f"{sentence}\n\n{headline}\n\n{caption}"),
+        encoding="utf-8",
     )
     print(headline)
 

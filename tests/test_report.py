@@ -1,6 +1,15 @@
 from __future__ import annotations
 
-from evals.report import END, SPLIT_NAMES, START, Summary, headline_table, inject, stage_table
+from evals.report import (
+    END,
+    SPLIT_NAMES,
+    START,
+    Summary,
+    headline_sentence,
+    headline_table,
+    inject,
+    stage_table,
+)
 
 
 def _summary(hit: float, correct: float) -> Summary:
@@ -33,3 +42,9 @@ def test_inject_replaces_only_the_marked_block() -> None:
     readme = f"intro\n{START}\nold\n{END}\noutro\n"
     assert inject(readme, "new") == f"intro\n{START}\nnew\n{END}\noutro\n"
     assert inject("no markers", "new") == "no markers"
+
+
+def test_headline_sentence_leads_with_overall_correctness() -> None:
+    sentence = headline_sentence(_summary(0.4, 0.3), _summary(0.9, 0.8))
+    assert sentence.startswith("**Answer correctness: 30% → 80% overall**")
+    assert "Gulf dialect 30% → 80%" in sentence

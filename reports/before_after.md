@@ -1,6 +1,6 @@
 # Before / after
 
-Before → after, baseline (broken) vs fix 2: + arabic chunking. 60 questions, LLM and judge `ollama/qwen3:8b`, embeddings `bge-m3`, run locally.
+Before = Baseline (broken), after = Fix 2: + Arabic chunking. 60 questions, LLM and judge `ollama/qwen3:8b`, embeddings `bge-m3`, run locally.
 
 | Questions | Hit@5 | Answer correct | Grounded | Tokens/query | p95 latency |
 |---|---|---|---|---|---|
