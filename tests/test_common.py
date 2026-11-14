@@ -10,13 +10,12 @@ from rag.common import (
     Doc,
     Hit,
     PipelineSpec,
-    RagPipeline,
     VectorStore,
     build_prompt,
     load_corpus,
     make_llm,
 )
-from tests.fakes import FakeEmbedder, FakeLLM
+from tests.fakes import FakeEmbedder
 
 DOCS = [
     Doc(id="en-1", lang="en", title="Riyadh", text="Riyadh is the capital of Saudi Arabia."),
@@ -55,41 +54,6 @@ def test_build_prompt_contains_question_and_clips_long_chunks() -> None:
     assert "What is x?" in prompt
     assert "x" * MAX_CHUNK_CHARS in prompt
     assert "x" * (MAX_CHUNK_CHARS + 1) not in prompt
-
-
-def test_pipeline_answers_from_retrieved_context(tmp_path: Path) -> None:
-    llm = FakeLLM("Riyadh")
-    pipe = RagPipeline(_spec(), FakeEmbedder(), llm, cache_dir=tmp_path)
-    pipe.index(DOCS)
-    answer = pipe.answer("What is the capital of Saudi Arabia?")
-    assert answer.text == "Riyadh"
-    assert answer.hits[0].chunk.doc_id == "en-1"
-    assert len(answer.hits) == 2
-    assert answer.prompt_tokens > 0
-
-
-def test_pipeline_does_not_call_llm_when_filter_drops_everything(tmp_path: Path) -> None:
-    llm = FakeLLM()
-    spec = PipelineSpec("empty", _one_chunk_per_doc, lambda t: t, lambda hits: [], 3, 2)
-    pipe = RagPipeline(spec, FakeEmbedder(), llm, cache_dir=tmp_path)
-    pipe.index(DOCS)
-    answer = pipe.answer("anything")
-    assert answer.hits == ()
-    assert llm.prompts == []
-    assert answer.prompt_tokens == 0
-
-
-def test_index_embeddings_are_cached_on_disk(tmp_path: Path) -> None:
-    class CountingEmbedder(FakeEmbedder):
-        calls = 0
-
-        def embed(self, texts):  # type: ignore[no-untyped-def]  # mirrors FakeEmbedder.embed
-            CountingEmbedder.calls += 1
-            return super().embed(texts)
-
-    for _ in range(2):
-        RagPipeline(_spec(), CountingEmbedder(), FakeLLM(), cache_dir=tmp_path).index(DOCS)
-    assert CountingEmbedder.calls == 1
 
 
 def test_load_corpus_round_trip(tmp_path: Path) -> None:

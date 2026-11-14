@@ -1,7 +1,8 @@
-"""Shared building blocks: data types, embeddings, vector store, LLM clients, pipeline shell.
+"""Shared building blocks: data types, embeddings, vector store, LLM clients, prompt.
 
 The baseline and fixed pipelines differ only in the three functions they plug into
-`PipelineSpec` (chunker, text preparation, post-retrieval filter). Everything else is here.
+`PipelineSpec` (chunker, text preparation, post-retrieval filter). Everything else is here
+and in rag/graph.py, which wires the steps into a LangGraph graph.
 """
 
 from __future__ import annotations
@@ -9,7 +10,6 @@ from __future__ import annotations
 import hashlib
 import json
 import os
-import time
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -114,6 +114,9 @@ class OllamaEmbedder:
         self.model = model or os.environ.get("EMBED_MODEL") or DEFAULT_EMBED_MODEL
         self._host = host or os.environ.get("OLLAMA_HOST") or DEFAULT_OLLAMA_HOST
 
+    def __repr__(self) -> str:  # stable across runs, so lgcov node fingerprints stay stable
+        return f"OllamaEmbedder({self.model!r})"
+
     def embed(self, texts: Sequence[str], batch_size: int = 16) -> NDArray[np.float32]:
         rows: list[list[float]] = []
         with httpx.Client(timeout=_TIMEOUT) as client:
@@ -127,9 +130,7 @@ class OllamaEmbedder:
         return np.asarray(rows, dtype=np.float32)
 
 
-def _cached_embed(
-    embedder: Embedder, texts: Sequence[str], cache_file: Path
-) -> NDArray[np.float32]:
+def cached_embed(embedder: Embedder, texts: Sequence[str], cache_file: Path) -> NDArray[np.float32]:
     """Embed `texts`, reusing the on-disk vectors when model and texts are unchanged."""
     digest = hashlib.sha256("\x00".join([embedder.model, *texts]).encode("utf-8")).hexdigest()
     if cache_file.exists():
@@ -175,6 +176,9 @@ class OllamaLLM:
         self._model = model
         self._host = host or os.environ.get("OLLAMA_HOST") or DEFAULT_OLLAMA_HOST
 
+    def __repr__(self) -> str:
+        return f"OllamaLLM({self._model!r})"
+
     def complete(self, prompt: str, *, json_mode: bool = False) -> Completion:
         payload: dict[str, object] = {
             "model": self._model,
@@ -199,6 +203,9 @@ class OpenAILLM:
     def __init__(self, model: str, api_key: str) -> None:
         self._model = model
         self._api_key = api_key
+
+    def __repr__(self) -> str:
+        return f"OpenAILLM({self._model!r})"
 
     def complete(self, prompt: str, *, json_mode: bool = False) -> Completion:
         payload: dict[str, object] = {
@@ -227,6 +234,9 @@ class AnthropicLLM:
     def __init__(self, model: str, api_key: str) -> None:
         self._model = model
         self._api_key = api_key
+
+    def __repr__(self) -> str:
+        return f"AnthropicLLM({self._model!r})"
 
     def complete(self, prompt: str, *, json_mode: bool = False) -> Completion:
         response = httpx.post(
@@ -279,46 +289,3 @@ def build_prompt(question: str, hits: Sequence[Hit]) -> str:
         "If the passages do not contain the answer, say you don't know.\n\n"
         f"Passages:\n{passages}\n\nQuestion: {question}\nAnswer:"
     )
-
-
-# ------------------------------------------------------------------------- pipeline
-
-
-class RagPipeline:
-    """index -> retrieve -> post-filter -> generate. Behaviour comes from the spec."""
-
-    def __init__(self, spec: PipelineSpec, embedder: Embedder, llm: LLM, cache_dir: Path) -> None:
-        self.spec = spec
-        self._embedder = embedder
-        self._llm = llm
-        self._cache_dir = cache_dir
-        self._store: VectorStore | None = None
-
-    def index(self, docs: Sequence[Doc]) -> int:
-        chunks = [chunk for doc in docs for chunk in self.spec.chunker(doc)]
-        texts = [self.spec.prepare_text(chunk.text) for chunk in chunks]
-        cache_file = self._cache_dir / f"index-{self.spec.name}.npz"
-        self._store = VectorStore(chunks, _cached_embed(self._embedder, texts, cache_file))
-        return len(chunks)
-
-    def retrieve(self, question: str) -> list[Hit]:
-        if self._store is None:
-            raise RuntimeError("call index() before retrieve()")
-        query_vector = self._embedder.embed([self.spec.prepare_text(question)])[0]
-        candidates = self._store.search(query_vector, self.spec.fetch_k)
-        return self.spec.post_filter(candidates)[: self.spec.top_k]
-
-    def answer(self, question: str) -> Answer:
-        started = time.perf_counter()
-        hits = self.retrieve(question)
-        if hits:
-            completion = self._llm.complete(build_prompt(question, hits))
-        else:
-            completion = Completion(NO_CONTEXT_ANSWER, 0, 0)
-        return Answer(
-            text=completion.text,
-            hits=tuple(hits),
-            prompt_tokens=completion.prompt_tokens,
-            completion_tokens=completion.completion_tokens,
-            latency_s=time.perf_counter() - started,
-        )
