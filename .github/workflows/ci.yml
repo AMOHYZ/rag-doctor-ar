@@ -1,0 +1,43 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync
+      - run: make lint
+      - run: make test
+
+  eval-guard:
+    # The evals need a local LLM, so they run on a laptop (`make eval-fixed`) and the report is
+    # committed with the change. This job refuses the PR if that report shows hit rate or
+    # answer correctness more than 5 points below the accepted reference.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync
+      - run: make guard
+
+  node-guard:
+    # lgcov replays the recorded runs in cassettes/. Nodes whose code is unchanged are served
+    # from the recording, so this needs no model. A changed node whose output differs is
+    # reported as the root of the drift and fails the job.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync
+      - run: make guard-ci
+      - if: always()
+        run: cat .cache/lgcov_report.md >> "$GITHUB_STEP_SUMMARY" || true

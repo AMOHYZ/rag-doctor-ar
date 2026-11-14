@@ -8,7 +8,7 @@ recorded and replayed as JSON.
 from __future__ import annotations
 
 import time
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import TypedDict
 
@@ -27,6 +27,7 @@ from rag.common import (
     VectorStore,
     build_prompt,
     cached_embed,
+    load_corpus,
 )
 
 
@@ -47,6 +48,8 @@ class RagState(TypedDict, total=False):
 
 
 RagGraph = CompiledStateGraph[RagState, None, RagState, RagState]
+Chunker = Callable[[Doc], list[Chunk]]
+TextPrep = Callable[[str], str]
 
 
 def _to_dicts(hits: Sequence[Hit]) -> list[HitDict]:
@@ -61,39 +64,49 @@ def _to_hits(rows: Sequence[HitDict]) -> list[Hit]:
 
 
 class Index:
-    """Chunks + embeddings for one pipeline spec, built on first use and cached on disk."""
+    """Chunk embeddings for one pipeline, built on first use and cached on disk."""
 
-    def __init__(self, spec: PipelineSpec, embedder: Embedder, cache_dir: Path) -> None:
-        self._spec = spec
+    def __init__(
+        self, name: str, embedder: Embedder, cache_dir: Path, corpus: Path | None = None
+    ) -> None:
+        self._name = name
         self._embedder = embedder
-        self._cache_file = cache_dir / f"index-{spec.name}.npz"
+        self._cache_file = cache_dir / f"index-{name}.npz"
+        self._corpus = corpus  # if set, the index builds itself from this file on first use
         self._store: VectorStore | None = None
-        self.n_chunks = 0
 
     def __repr__(self) -> str:  # stable across runs, so lgcov node fingerprints stay stable
-        return f"Index({self._spec.name!r})"
+        return f"Index({self._name!r})"
 
-    def build(self, docs: Sequence[Doc]) -> int:
-        chunks = [chunk for doc in docs for chunk in self._spec.chunker(doc)]
-        texts = [self._spec.prepare_text(chunk.text) for chunk in chunks]
+    def build(self, docs: Sequence[Doc], chunker: Chunker, prepare_text: TextPrep) -> int:
+        chunks = [chunk for doc in docs for chunk in chunker(doc)]
+        texts = [prepare_text(chunk.text) for chunk in chunks]
         self._store = VectorStore(chunks, cached_embed(self._embedder, texts, self._cache_file))
-        self.n_chunks = len(chunks)
-        return self.n_chunks
+        return len(chunks)
 
-    def search(self, question: str, k: int) -> list[Hit]:
+    def ensure_built(self, chunker: Chunker, prepare_text: TextPrep) -> None:
+        if self._store is None and self._corpus is not None:
+            self.build(load_corpus(self._corpus), chunker, prepare_text)
+
+    def search(self, prepared_query: str, k: int) -> list[Hit]:
         if self._store is None:
-            raise RuntimeError("call Index.build() before searching")
-        query_vector = self._embedder.embed([self._spec.prepare_text(question)])[0]
-        return self._store.search(query_vector, k)
+            raise RuntimeError("the index is empty: call Index.build() or pass a corpus path")
+        return self._store.search(self._embedder.embed([prepared_query])[0], k)
 
 
 def build_graph(spec: PipelineSpec, index: Index, llm: LLM) -> RagGraph:
+    # Each node closes over only the functions it uses. Tools that fingerprint node code
+    # (lgcov) can then tell which node a code change touches: the chunker and text
+    # preparation belong to `retrieve`, the filter to `post_filter`, the prompt to `generate`.
+    chunker, prepare_text, keep = spec.chunker, spec.prepare_text, spec.post_filter
+    fetch_k, top_k = spec.fetch_k, spec.top_k
+
     def retrieve(state: RagState) -> RagState:
-        return {"candidates": _to_dicts(index.search(state["question"], spec.fetch_k))}
+        index.ensure_built(chunker, prepare_text)
+        return {"candidates": _to_dicts(index.search(prepare_text(state["question"]), fetch_k))}
 
     def post_filter(state: RagState) -> RagState:
-        kept = spec.post_filter(_to_hits(state["candidates"]))[: spec.top_k]
-        return {"hits": _to_dicts(kept)}
+        return {"hits": _to_dicts(keep(_to_hits(state["candidates"]))[:top_k])}
 
     def generate(state: RagState) -> RagState:
         hits = _to_hits(state["hits"])

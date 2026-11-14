@@ -1,0 +1,5 @@
+# lgcov (https://github.com/AMOHYZ/langgraph-regression-guard) replays recorded runs of the
+# graph and reports which node's output changed first. Run it with the repo root on PYTHONPATH:
+#   make guard-replay
+graph_entrypoint: rag/app.py:graph
+cassette_dir: cassettes

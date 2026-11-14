@@ -81,8 +81,8 @@ def main() -> None:
         os.environ.get("JUDGE_MODEL") or None,
         think=True,  # the judge reasons before its verdict; without this a small model misgrades
     )
-    index = Index(spec, embedder, cache_dir=ROOT / ".cache")
-    n_chunks = index.build(load_corpus(CORPUS))
+    index = Index(spec.name, embedder, cache_dir=ROOT / ".cache")
+    n_chunks = index.build(load_corpus(CORPUS), spec.chunker, spec.prepare_text)
     graph = build_graph(spec, index, make_llm())
     questions = load_questions(QUESTIONS)[: args.limit]
     print(f"{spec.name}: {n_chunks} chunks indexed, {len(questions)} questions", flush=True)

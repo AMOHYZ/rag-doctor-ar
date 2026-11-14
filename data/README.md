@@ -23,3 +23,6 @@ Wikipedia throttles anonymous clients, so `make data` takes roughly 30 minutes. 
 Article text is by Wikipedia contributors, licensed CC BY-SA 4.0. Every row of `corpus.jsonl`
 has a `url` pointing at the source revision. The text is downloaded, not redistributed here.
 `build_manifest.py` shows how the article list was chosen.
+
+`cassettes/baseline.json` (recorded pipeline runs for the regression guard) contains short
+excerpts of the same articles, under the same licence.

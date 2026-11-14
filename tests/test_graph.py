@@ -22,14 +22,14 @@ def _spec(top_k: int = 2) -> PipelineSpec:
 
 
 def test_graph_has_one_node_per_pipeline_step(tmp_path: Path) -> None:
-    graph = build_graph(_spec(), Index(_spec(), FakeEmbedder(), tmp_path), FakeLLM())
+    graph = build_graph(_spec(), Index("test", FakeEmbedder(), tmp_path), FakeLLM())
     assert {"retrieve", "post_filter", "generate"} <= set(graph.get_graph().nodes)
 
 
 def test_graph_answers_from_retrieved_context(tmp_path: Path) -> None:
     llm = FakeLLM("Riyadh")
-    index = Index(_spec(), FakeEmbedder(), tmp_path)
-    assert index.build(DOCS) == 3
+    index = Index("test", FakeEmbedder(), tmp_path)
+    assert index.build(DOCS, _one_chunk_per_doc, str) == 3
     answer = answer_question(
         build_graph(_spec(), index, llm), "What is the capital of Saudi Arabia?"
     )
@@ -42,8 +42,8 @@ def test_graph_answers_from_retrieved_context(tmp_path: Path) -> None:
 def test_graph_does_not_call_llm_when_filter_drops_everything(tmp_path: Path) -> None:
     llm = FakeLLM()
     spec = PipelineSpec("empty", _one_chunk_per_doc, lambda t: t, lambda hits: [], 3, 2)
-    index = Index(spec, FakeEmbedder(), tmp_path)
-    index.build(DOCS)
+    index = Index("empty", FakeEmbedder(), tmp_path)
+    index.build(DOCS, _one_chunk_per_doc, str)
     answer = answer_question(build_graph(spec, index, llm), "anything")
     assert answer.hits == ()
     assert llm.prompts == []
@@ -60,5 +60,16 @@ def test_index_embeddings_are_cached_on_disk(tmp_path: Path) -> None:
             return super().embed(texts)
 
     for _ in range(2):
-        Index(_spec(), CountingEmbedder(), tmp_path).build(DOCS)
+        Index("test", CountingEmbedder(), tmp_path).build(DOCS, _one_chunk_per_doc, str)
     assert calls == 1
+
+
+def test_graph_builds_the_index_from_a_corpus_file_on_first_use(tmp_path: Path) -> None:
+    corpus = tmp_path / "corpus.jsonl"
+    corpus.write_text(
+        '{"id": "en-2", "lang": "en", "title": "Falafel", "text": "A fried chickpea ball."}\n',
+        encoding="utf-8",
+    )
+    index = Index("test", FakeEmbedder(), tmp_path, corpus=corpus)
+    answer = answer_question(build_graph(_spec(), index, FakeLLM()), "chickpea")
+    assert answer.hits[0].chunk.doc_id == "en-2"
