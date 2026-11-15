@@ -1,0 +1,1434 @@
+{
+ "meta": {
+  "label": "Baseline (broken)",
+  "pipeline": "baseline",
+  "generated_at": "2026-11-14T15:29:45+00:00",
+  "llm": "ollama/qwen3:8b",
+  "embeddings": "bge-m3",
+  "top_k": 5,
+  "chunks_indexed": 1164,
+  "questions": 60
+ },
+ "summary": [
+  {
+   "split": "msa",
+   "n": 20,
+   "hit_rate": 0.65,
+   "correctness": 0.05,
+   "groundedness": 0.7142857142857143,
+   "answered": 0.35,
+   "tokens_per_query": 698.5,
+   "latency_p50_s": 11.71,
+   "latency_p95_s": 47.034
+  },
+  {
+   "split": "gulf",
+   "n": 20,
+   "hit_rate": 0.5,
+   "correctness": 0.1,
+   "groundedness": 0.6,
+   "answered": 0.25,
+   "tokens_per_query": 322.5,
+   "latency_p50_s": 8.314,
+   "latency_p95_s": 15.987
+  },
+  {
+   "split": "en",
+   "n": 20,
+   "hit_rate": 1.0,
+   "correctness": 0.95,
+   "groundedness": 1.0,
+   "answered": 1.0,
+   "tokens_per_query": 600.1,
+   "latency_p50_s": 11.78,
+   "latency_p95_s": 21.415
+  },
+  {
+   "split": "overall",
+   "n": 60,
+   "hit_rate": 0.7166666666666667,
+   "correctness": 0.36666666666666664,
+   "groundedness": 0.875,
+   "answered": 0.5333333333333333,
+   "tokens_per_query": 540.3666666666667,
+   "latency_p50_s": 10.51,
+   "latency_p95_s": 27.965
+  }
+ ],
+ "records": [
+  {
+   "id": "msa-01",
+   "lang": "msa",
+   "question": "ما الاسم الذي يُطلق غالباً على البسبوسة في بلاد الشام؟",
+   "gold_answer": "الهريسة",
+   "gold_doc_ids": [
+    "ar-1012795"
+   ],
+   "answer": "الاسم الذي يُطلق غالباً على البسبوسة في بلاد الشام هو البسبوسة.",
+   "retrieved_doc_ids": [
+    "ar-1012795",
+    "ar-421131"
+   ],
+   "scores": [
+    0.6785,
+    0.5515
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "supported",
+   "prompt_tokens": 1107,
+   "completion_tokens": 26,
+   "latency_s": 27.965
+  },
+  {
+   "id": "msa-02",
+   "lang": "msa",
+   "question": "ما المحافظات الأربع التي يربط بينها جبل طحنان؟",
+   "gold_answer": "أحد المسارحة والعارضة والحرث وأبو عريش",
+   "gold_doc_ids": [
+    "ar-10277693"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.383
+  },
+  {
+   "id": "msa-03",
+   "lang": "msa",
+   "question": "ما الطراز المعماري الذي استُلهم في تصميم المشاريع الحديثة داخل وادي صفار؟",
+   "gold_answer": "العمارة النجدية التقليدية",
+   "gold_doc_ids": [
+    "ar-10488858"
+   ],
+   "answer": "لا توجد معلومات في النص عن الطراز المعماري الذي استُلهم في تصميم المشاريع الحديثة داخل وادي صفار.",
+   "retrieved_doc_ids": [
+    "ar-10488858"
+   ],
+   "scores": [
+    0.6258
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "supported",
+   "prompt_tokens": 550,
+   "completion_tokens": 35,
+   "latency_s": 13.639
+  },
+  {
+   "id": "msa-04",
+   "lang": "msa",
+   "question": "على أي ضفة من وادي حنيفة يقع حي الطريف؟",
+   "gold_answer": "على الضفة الغربية من وادي حنيفة",
+   "gold_doc_ids": [
+    "ar-10488876"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 1.197
+  },
+  {
+   "id": "msa-05",
+   "lang": "msa",
+   "question": "ما الاسم القديم لوادي الخُمس الذي ذكره الهمداني في كتابه «صفة جزيرة العرب»؟",
+   "gold_answer": "زائرة",
+   "gold_doc_ids": [
+    "ar-1061379"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.165
+  },
+  {
+   "id": "msa-06",
+   "lang": "msa",
+   "question": "كم عاماً يمتد العمل على مشروع تطوير جدة التاريخية؟",
+   "gold_answer": "15 عاماً",
+   "gold_doc_ids": [
+    "ar-1176211"
+   ],
+   "answer": "العمل على مشروع تطوير جدة التاريخية يمتد لـ 10 سنوات.",
+   "retrieved_doc_ids": [
+    "ar-1176211",
+    "ar-6915"
+   ],
+   "scores": [
+    0.6726,
+    0.6228
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "unsupported",
+   "prompt_tokens": 981,
+   "completion_tokens": 22,
+   "latency_s": 24.899
+  },
+  {
+   "id": "msa-07",
+   "lang": "msa",
+   "question": "كم عدد بوابات المغادرة والقدوم في مطار الأحساء الدولي بعد مشروع التطوير والتوسعة؟",
+   "gold_answer": "10 بوابات",
+   "gold_doc_ids": [
+    "ar-1448336"
+   ],
+   "answer": "لا توجد معلومات في النصوص عن عدد بوابات المغادرة والقدوم في مطار الأحساء الدولي بعد مشروع التطوير والتوسعة.",
+   "retrieved_doc_ids": [
+    "ar-1448336",
+    "ar-746248",
+    "ar-610942",
+    "ar-79185"
+   ],
+   "scores": [
+    0.6522,
+    0.6066,
+    0.5888,
+    0.5545
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 1914,
+   "completion_tokens": 38,
+   "latency_s": 45.558
+  },
+  {
+   "id": "msa-08",
+   "lang": "msa",
+   "question": "كم مصلياً يتسع له مسجد مطار الملك فهد الدولي؟",
+   "gold_answer": "ألفا مصلٍّ (2000)",
+   "gold_doc_ids": [
+    "ar-164378"
+   ],
+   "answer": "لا يوجد معلومات عن عدد المصلين الذين يتسع له مسجد مطار الملك فهد الدولي في النصوص المقدمة.",
+   "retrieved_doc_ids": [
+    "ar-164378",
+    "ar-79185",
+    "ar-79955",
+    "ar-172794",
+    "ar-172828"
+   ],
+   "scores": [
+    0.6899,
+    0.6336,
+    0.6168,
+    0.5848,
+    0.5732
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 2342,
+   "completion_tokens": 31,
+   "latency_s": 57.434
+  },
+  {
+   "id": "msa-09",
+   "lang": "msa",
+   "question": "كم تبلغ مساحة مدينة ينبع الصناعية التي أُسست عام 1975؟",
+   "gold_answer": "185 كيلومتراً مربعاً",
+   "gold_doc_ids": [
+    "ar-16663"
+   ],
+   "answer": "don't know",
+   "retrieved_doc_ids": [
+    "ar-16663"
+   ],
+   "scores": [
+    0.6697
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 608,
+   "completion_tokens": 4,
+   "latency_s": 11.795
+  },
+  {
+   "id": "msa-10",
+   "lang": "msa",
+   "question": "متى حُررت مدينة الخفجي من القوات العراقية؟",
+   "gold_answer": "في 1 فبراير 1991",
+   "gold_doc_ids": [
+    "ar-170304"
+   ],
+   "answer": "don't know",
+   "retrieved_doc_ids": [
+    "ar-170304"
+   ],
+   "scores": [
+    0.5955
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 502,
+   "completion_tokens": 4,
+   "latency_s": 10.51
+  },
+  {
+   "id": "msa-11",
+   "lang": "msa",
+   "question": "كم تبلغ مساحة موقع المنطقة الصناعية الجبيل 2؟",
+   "gold_answer": "5500 هكتار",
+   "gold_doc_ids": [
+    "ar-15658"
+   ],
+   "answer": "لا توجد معلومات عن مساحة المنطقة الصناعية الجبيل 2 في النصوص المقدمة.",
+   "retrieved_doc_ids": [
+    "ar-15658"
+   ],
+   "scores": [
+    0.6024
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 535,
+   "completion_tokens": 27,
+   "latency_s": 11.71
+  },
+  {
+   "id": "msa-12",
+   "lang": "msa",
+   "question": "من أي جبال ينحدر وادي الشعبة الذي يلتقي بوادي الرمة؟",
+   "gold_answer": "من جبال أجا ورمان وسلمى",
+   "gold_doc_ids": [
+    "ar-151304"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.307
+  },
+  {
+   "id": "msa-13",
+   "lang": "msa",
+   "question": "ما الاسم الذي ذكره محمد المانع لوادي الباطن بسبب غرق الناس والمواشي في سيوله؟",
+   "gold_answer": "وادي الجثث",
+   "gold_doc_ids": [
+    "ar-168253"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.147
+  },
+  {
+   "id": "msa-14",
+   "lang": "msa",
+   "question": "ما الاسم التاريخي لجبل طويق؟",
+   "gold_answer": "جبل العارض أو عارض اليمامة",
+   "gold_doc_ids": [
+    "ar-148942"
+   ],
+   "answer": "الاسم التاريخي لجبل طويق هو \"طوق\".",
+   "retrieved_doc_ids": [
+    "ar-148942"
+   ],
+   "scores": [
+    0.646
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "supported",
+   "prompt_tokens": 537,
+   "completion_tokens": 16,
+   "latency_s": 10.561
+  },
+  {
+   "id": "msa-15",
+   "lang": "msa",
+   "question": "ما الغرض من إنشاء قاعدة الملك عبد العزيز الجوية في المنطقة الشرقية؟",
+   "gold_answer": "حماية النطاق الجوي للمملكة وآبار النفط في المنطقة الشرقية",
+   "gold_doc_ids": [
+    "ar-1479885"
+   ],
+   "answer": "الغرض من إنشاء قاعدة الملك عبد العزيز الجوية في المنطقة الشرقية هو تلبية احتياجات القوات المسلحة الأمريكية والعمل في مجال الطيران.",
+   "retrieved_doc_ids": [
+    "ar-1479885",
+    "ar-79185",
+    "ar-164378",
+    "ar-172794",
+    "ar-172828"
+   ],
+   "scores": [
+    0.6916,
+    0.6285,
+    0.5989,
+    0.5704,
+    0.5663
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "supported",
+   "prompt_tokens": 2344,
+   "completion_tokens": 37,
+   "latency_s": 47.034
+  },
+  {
+   "id": "msa-16",
+   "lang": "msa",
+   "question": "ما الحدث الذي عجّل بانتقال مركز قيادة العمليات الجوية المشتركة إلى قاعدة الأمير سلطان الجوية؟",
+   "gold_answer": "تفجير أبراج الخبر",
+   "gold_doc_ids": [
+    "ar-1215870"
+   ],
+   "answer": "تفجير أبراج الخبر عام 1996.",
+   "retrieved_doc_ids": [
+    "ar-1215870",
+    "ar-1479885"
+   ],
+   "scores": [
+    0.6977,
+    0.5672
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 1009,
+   "completion_tokens": 13,
+   "latency_s": 17.454
+  },
+  {
+   "id": "msa-17",
+   "lang": "msa",
+   "question": "ما الطبق ذو الأصل الشمال أفريقي الذي يمكن استخدامه كقاعدة للشكشوكة؟",
+   "gold_answer": "المطبوخة",
+   "gold_doc_ids": [
+    "ar-1323319"
+   ],
+   "answer": "الشكشوقة هي طبق شرقي أفريقي يُصنع من البيض والطماطم والخضروات.",
+   "retrieved_doc_ids": [
+    "ar-1323319",
+    "en-6745"
+   ],
+   "scores": [
+    0.6821,
+    0.5763
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "unsupported",
+   "prompt_tokens": 711,
+   "completion_tokens": 28,
+   "latency_s": 14.239
+  },
+  {
+   "id": "msa-18",
+   "lang": "msa",
+   "question": "ما أبرز القبائل اليهودية التي سكنت يثرب قبل الإسلام؟",
+   "gold_answer": "بنو قينقاع وبنو قريظة وبنو النضير",
+   "gold_doc_ids": [
+    "ar-10400"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.476
+  },
+  {
+   "id": "msa-19",
+   "lang": "msa",
+   "question": "ماذا كانت تُسمى غرف التفتيش في قنوات عين زبيدة؟",
+   "gold_answer": "الخرزات",
+   "gold_doc_ids": [
+    "ar-1131156"
+   ],
+   "answer": "don't know",
+   "retrieved_doc_ids": [
+    "ar-1131156"
+   ],
+   "scores": [
+    0.5803
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 545,
+   "completion_tokens": 4,
+   "latency_s": 11.973
+  },
+  {
+   "id": "msa-20",
+   "lang": "msa",
+   "question": "ما المستشفى المرجعي في مدينة الباحة الذي تقرر تحويله إلى مستشفى تخصصي؟",
+   "gold_answer": "مستشفى الملك فهد المركزي",
+   "gold_doc_ids": [
+    "ar-11015"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.305
+  },
+  {
+   "id": "gulf-01",
+   "lang": "gulf",
+   "question": "منهي الأسره اللي مسكت الأسياح بعد عهد سلطان مارد؟",
+   "gold_answer": "آل فهيد",
+   "gold_doc_ids": [
+    "ar-100033"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.124
+  },
+  {
+   "id": "gulf-02",
+   "lang": "gulf",
+   "question": "كل كم سنه تجي الفيضانات القويه اللي توصّل موية الأوديه الكبيره في شمال تهامه للبحر الأحمر؟",
+   "gold_answer": "كل ثلاث إلى خمس سنوات",
+   "gold_doc_ids": [
+    "ar-1017313"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.235
+  },
+  {
+   "id": "gulf-03",
+   "lang": "gulf",
+   "question": "ضرما زمان كانت تعتبر البوابه الغربيه لأي إقليم؟",
+   "gold_answer": "إقليم العارض",
+   "gold_doc_ids": [
+    "ar-102345"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.127
+  },
+  {
+   "id": "gulf-04",
+   "lang": "gulf",
+   "question": "في كرواتيا متى يقدمون الورق المحشي حسب عادتهم؟",
+   "gold_answer": "في ليلة رأس السنة",
+   "gold_doc_ids": [
+    "ar-10353422"
+   ],
+   "answer": "لا توجد معلومات في النصوص عن موعد تقديم الورق المحشي في كرواتيا.",
+   "retrieved_doc_ids": [
+    "ar-10353422"
+   ],
+   "scores": [
+    0.5952
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 589,
+   "completion_tokens": 25,
+   "latency_s": 14.206
+  },
+  {
+   "id": "gulf-05",
+   "lang": "gulf",
+   "question": "وش جزر الخليج العربي اللي تعتبر محطات للطيور المهاجره؟",
+   "gold_answer": "جزر الجريد وكران وأبو علي وجنا",
+   "gold_doc_ids": [
+    "ar-1040976"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.272
+  },
+  {
+   "id": "gulf-06",
+   "lang": "gulf",
+   "question": "وش الوديان اللي كانت مع وادي تبل من أكبر وديان الباديه الغربيه بالعراق؟",
+   "gold_answer": "وادي حوران والغدف والأبيض",
+   "gold_doc_ids": [
+    "ar-10431865"
+   ],
+   "answer": "وادي تبل يشترك من الشمال بحدود مع أودية فرعية ضمن حوض وادي الغدف ووادي حوران، ومن الجنوب يشترك مع فروع لوادي الأبيض.",
+   "retrieved_doc_ids": [
+    "ar-10431865"
+   ],
+   "scores": [
+    0.6395
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 596,
+   "completion_tokens": 47,
+   "latency_s": 15.506
+  },
+  {
+   "id": "gulf-07",
+   "lang": "gulf",
+   "question": "وش اسم الوعاء الخشبي اللي يدقون فيه حب الهريس؟",
+   "gold_answer": "المنحاز",
+   "gold_doc_ids": [
+    "ar-1063441"
+   ],
+   "answer": "don't know",
+   "retrieved_doc_ids": [
+    "ar-1063441"
+   ],
+   "scores": [
+    0.6056
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 567,
+   "completion_tokens": 4,
+   "latency_s": 14.303
+  },
+  {
+   "id": "gulf-08",
+   "lang": "gulf",
+   "question": "منهو اللي انولد بالطايف وعطوه ولاية العراق وخراسان؟",
+   "gold_answer": "زياد بن أبيه",
+   "gold_doc_ids": [
+    "ar-12584"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.312
+  },
+  {
+   "id": "gulf-09",
+   "lang": "gulf",
+   "question": "منهي الجهه اللي حسمت الخلاف على مكان سوق حباشه؟",
+   "gold_answer": "دارة الملك عبدالعزيز",
+   "gold_doc_ids": [
+    "ar-1271451"
+   ],
+   "answer": "الخلاف على مكان سوق حباشة حسمه فقهاء مكة.",
+   "retrieved_doc_ids": [
+    "ar-1271451"
+   ],
+   "scores": [
+    0.5553
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "unsupported",
+   "prompt_tokens": 538,
+   "completion_tokens": 20,
+   "latency_s": 9.775
+  },
+  {
+   "id": "gulf-10",
+   "lang": "gulf",
+   "question": "وش الفواكه اللي تنزرع في عسير وتجذب السياح؟",
+   "gold_answer": "التوت والخوخ والمشمش والعنب والرمان",
+   "gold_doc_ids": [
+    "ar-12798"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.286
+  },
+  {
+   "id": "gulf-11",
+   "lang": "gulf",
+   "question": "وش يسمون المطبق اللي ما فيه حشوه في بروناي؟",
+   "gold_answer": "مرتبق كوسونغ",
+   "gold_doc_ids": [
+    "ar-128712"
+   ],
+   "answer": "don't know",
+   "retrieved_doc_ids": [
+    "ar-708813"
+   ],
+   "scores": [
+    0.5645
+   ],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 541,
+   "completion_tokens": 4,
+   "latency_s": 10.041
+  },
+  {
+   "id": "gulf-12",
+   "lang": "gulf",
+   "question": "دومة الجندل معروفه من أيام أي حضاره قديمه؟",
+   "gold_answer": "من أيام الآشوريين",
+   "gold_doc_ids": [
+    "ar-131119"
+   ],
+   "answer": "دومة الجندل معروفة من أيام الحضارة الآشورية.",
+   "retrieved_doc_ids": [
+    "ar-131119"
+   ],
+   "scores": [
+    0.6438
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 544,
+   "completion_tokens": 18,
+   "latency_s": 12.206
+  },
+  {
+   "id": "gulf-13",
+   "lang": "gulf",
+   "question": "وادي نعمان مشهور بأي شجر؟",
+   "gold_answer": "شجر الأراك",
+   "gold_doc_ids": [
+    "ar-143153"
+   ],
+   "answer": "لا يوجد إشارة إلى نوع معين من الشجر في وادي نعمان في النصوص المقدمة.",
+   "retrieved_doc_ids": [
+    "ar-143153"
+   ],
+   "scores": [
+    0.6286
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "supported",
+   "prompt_tokens": 564,
+   "completion_tokens": 27,
+   "latency_s": 15.987
+  },
+  {
+   "id": "gulf-14",
+   "lang": "gulf",
+   "question": "وش اسم القصر اللي بنوه آل علي في حايل؟",
+   "gold_answer": "قصر برزان",
+   "gold_doc_ids": [
+    "ar-15883"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.305
+  },
+  {
+   "id": "gulf-15",
+   "lang": "gulf",
+   "question": "وين أول مكان نزلوا فيه بني حنيفه يوم ارتحلوا من الحجاز وعالية نجد؟",
+   "gold_answer": "قارات الحُبل",
+   "gold_doc_ids": [
+    "ar-161393"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.151
+  },
+  {
+   "id": "gulf-16",
+   "lang": "gulf",
+   "question": "وش اسم الجبل اللي في وادي رابغ وتسمّت عليه غزوه من غزوات الرسول؟",
+   "gold_answer": "جبل بحران",
+   "gold_doc_ids": [
+    "ar-1713223"
+   ],
+   "answer": "don't know",
+   "retrieved_doc_ids": [
+    "ar-1713223"
+   ],
+   "scores": [
+    0.5642
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 585,
+   "completion_tokens": 4,
+   "latency_s": 14.502
+  },
+  {
+   "id": "gulf-17",
+   "lang": "gulf",
+   "question": "كم تبعد جامعة الباحه عن محافظة العقيق؟",
+   "gold_answer": "13 كم",
+   "gold_doc_ids": [
+    "ar-171522"
+   ],
+   "answer": "don't know",
+   "retrieved_doc_ids": [
+    "ar-171522"
+   ],
+   "scores": [
+    0.6197
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 496,
+   "completion_tokens": 4,
+   "latency_s": 8.314
+  },
+  {
+   "id": "gulf-18",
+   "lang": "gulf",
+   "question": "متى وصلت أول رحله دوليه مباشره لمطار القيصومه ومن وين جت؟",
+   "gold_answer": "في 21 مارس 2023 قادمة من دبي",
+   "gold_doc_ids": [
+    "ar-172862"
+   ],
+   "answer": "في يونيو 2019، وصلت أول رحلة دولية مباشرة لمطار القيصومة من شركة طيران ناس، ودشّنها أمير المنطقة الشرقية.",
+   "retrieved_doc_ids": [
+    "ar-172862",
+    "en-464414"
+   ],
+   "scores": [
+    0.6492,
+    0.5792
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "unsupported",
+   "prompt_tokens": 702,
+   "completion_tokens": 43,
+   "latency_s": 16.919
+  },
+  {
+   "id": "gulf-19",
+   "lang": "gulf",
+   "question": "كم توصل حرارة موية العين الحاره اللي قريب من الداير؟",
+   "gold_answer": "90 درجة مئوية",
+   "gold_doc_ids": [
+    "ar-17457"
+   ],
+   "answer": "I don't know. / لا أعرف.",
+   "retrieved_doc_ids": [],
+   "scores": [],
+   "hit": false,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "latency_s": 0.296
+  },
+  {
+   "id": "gulf-20",
+   "lang": "gulf",
+   "question": "أي وزاره تشرف على المدينه الصناعيه في خميس مشيط؟",
+   "gold_answer": "وزارة الصناعة والثروة المعدنية",
+   "gold_doc_ids": [
+    "ar-17452"
+   ],
+   "answer": "don't know",
+   "retrieved_doc_ids": [
+    "ar-17452"
+   ],
+   "scores": [
+    0.5755
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "no_answer",
+   "prompt_tokens": 528,
+   "completion_tokens": 4,
+   "latency_s": 9.032
+  },
+  {
+   "id": "en-01",
+   "lang": "en",
+   "question": "Which fictional planet was the Liwa desert used to represent in the 2021 film Dune?",
+   "gold_answer": "Arrakis",
+   "gold_doc_ids": [
+    "en-10495875"
+   ],
+   "answer": "The Liwa desert was used to represent the planet Arrakis in the 2021 film Dune.",
+   "retrieved_doc_ids": [
+    "en-10495875"
+   ],
+   "scores": [
+    0.7101
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 261,
+   "completion_tokens": 24,
+   "latency_s": 6.791
+  },
+  {
+   "id": "en-02",
+   "lang": "en",
+   "question": "Since what year has the Dubai Sports Council been working to revitalize Hatta with sports and outdoor activities?",
+   "gold_answer": "Since 2009",
+   "gold_doc_ids": [
+    "en-11015195"
+   ],
+   "answer": "Since 2009, the Dubai Sports Council has been working to revitalize Hatta with sports and outdoor activities.",
+   "retrieved_doc_ids": [
+    "en-11015195",
+    "en-11015195",
+    "en-11015195",
+    "en-11015195",
+    "en-11015195"
+   ],
+   "scores": [
+    0.7413,
+    0.705,
+    0.653,
+    0.6518,
+    0.6413
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 847,
+   "completion_tokens": 26,
+   "latency_s": 20.038
+  },
+  {
+   "id": "en-03",
+   "lang": "en",
+   "question": "What material is the track surface of Yas Marina Circuit made of, and where was it shipped from?",
+   "gold_answer": "Graywacke aggregate from a Bayston Hill quarry in Shropshire, England",
+   "gold_doc_ids": [
+    "en-11169104"
+   ],
+   "answer": "The track surface of Yas Marina Circuit is made of graywacke aggregate, which was shipped from a Bayston Hill quarry in Shropshire, England.",
+   "retrieved_doc_ids": [
+    "en-11169104",
+    "en-11169104",
+    "en-11169104",
+    "en-11169104",
+    "en-11169104"
+   ],
+   "scores": [
+    0.7338,
+    0.6422,
+    0.6341,
+    0.6067,
+    0.5895
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 858,
+   "completion_tokens": 33,
+   "latency_s": 22.854
+  },
+  {
+   "id": "en-04",
+   "lang": "en",
+   "question": "Besides Ibra's souq, which other souq is named as one of the most important in Oman?",
+   "gold_answer": "Muttrah",
+   "gold_doc_ids": [
+    "en-12447128"
+   ],
+   "answer": "Muttrah is named as one of the most important souqs in Oman besides Ibra's souq.",
+   "retrieved_doc_ids": [
+    "en-12447128",
+    "en-12447128"
+   ],
+   "scores": [
+    0.6592,
+    0.5506
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 413,
+   "completion_tokens": 23,
+   "latency_s": 8.926
+  },
+  {
+   "id": "en-05",
+   "lang": "en",
+   "question": "Which body announced the regional dishes of Saudi Arabia's 13 regions in January 2024?",
+   "gold_answer": "The Saudi Culinary Commission, under the Ministry of Culture",
+   "gold_doc_ids": [
+    "en-12842989"
+   ],
+   "answer": "The Saudi Culinary Commission announced the regional dishes of Saudi Arabia's 13 regions in January 2024.",
+   "retrieved_doc_ids": [
+    "en-12842989",
+    "en-12842989"
+   ],
+   "scores": [
+    0.5827,
+    0.5594
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 366,
+   "completion_tokens": 26,
+   "latency_s": 8.536
+  },
+  {
+   "id": "en-06",
+   "lang": "en",
+   "question": "In what year were the Hawar Islands listed as a Ramsar site?",
+   "gold_answer": "1997",
+   "gold_doc_ids": [
+    "en-13667"
+   ],
+   "answer": "The Hawar Islands were listed as a Ramsar site in 1997.",
+   "retrieved_doc_ids": [
+    "en-13667"
+   ],
+   "scores": [
+    0.6497
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 253,
+   "completion_tokens": 19,
+   "latency_s": 7.71
+  },
+  {
+   "id": "en-07",
+   "lang": "en",
+   "question": "How heavy is the legendary rock in the Az al Qadim mosque in Manah?",
+   "gold_answer": "100 kg",
+   "gold_doc_ids": [
+    "en-13743793"
+   ],
+   "answer": "The legendary rock in the Az al Qadim mosque in Manah weighs fifty pounds.",
+   "retrieved_doc_ids": [
+    "en-13743793",
+    "en-13743793",
+    "en-13743793"
+   ],
+   "scores": [
+    0.6432,
+    0.5607,
+    0.5526
+   ],
+   "hit": true,
+   "correctness": "incorrect",
+   "groundedness": "supported",
+   "prompt_tokens": 588,
+   "completion_tokens": 19,
+   "latency_s": 14.696
+  },
+  {
+   "id": "en-08",
+   "lang": "en",
+   "question": "Which channel separates Bubiyan Island from the Kuwaiti mainland?",
+   "gold_answer": "The Al-Sabiyyah channel",
+   "gold_doc_ids": [
+    "en-1550688"
+   ],
+   "answer": "The Al-Sabiyyah channel separates Bubiyan Island from the Kuwaiti mainland.",
+   "retrieved_doc_ids": [
+    "en-1550688",
+    "en-1550688",
+    "en-1550688"
+   ],
+   "scores": [
+    0.7323,
+    0.6577,
+    0.5666
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 628,
+   "completion_tokens": 19,
+   "latency_s": 11.78
+  },
+  {
+   "id": "en-09",
+   "lang": "en",
+   "question": "Dhaid is bisected by a road running from Sharjah to which town in the foothills of the Hajar Mountains?",
+   "gold_answer": "Masafi",
+   "gold_doc_ids": [
+    "en-1585674"
+   ],
+   "answer": "Dhaid is bisected by the East/West Road running from Sharjah to Masafi in the foothills of the Hajar Mountains.",
+   "retrieved_doc_ids": [
+    "en-1585674",
+    "en-1585674"
+   ],
+   "scores": [
+    0.7262,
+    0.6923
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 392,
+   "completion_tokens": 30,
+   "latency_s": 8.409
+  },
+  {
+   "id": "en-10",
+   "lang": "en",
+   "question": "When was the Dubai Gold Souk informally formed?",
+   "gold_answer": "In the early 1900s",
+   "gold_doc_ids": [
+    "en-16267884"
+   ],
+   "answer": "The Dubai Gold Souk was informally formed in the early 1900s.",
+   "retrieved_doc_ids": [
+    "en-16267884",
+    "en-16267884",
+    "en-16267884",
+    "en-47152665",
+    "en-83306649"
+   ],
+   "scores": [
+    0.7062,
+    0.6683,
+    0.6475,
+    0.6276,
+    0.6045
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 827,
+   "completion_tokens": 20,
+   "latency_s": 15.292
+  },
+  {
+   "id": "en-11",
+   "lang": "en",
+   "question": "By what year had a falafel shop opened in Beirut?",
+   "gold_answer": "By 1933",
+   "gold_doc_ids": [
+    "en-164311"
+   ],
+   "answer": "By 1933, a falafel shop had been opened in Beirut.",
+   "retrieved_doc_ids": [
+    "en-164311",
+    "en-164311"
+   ],
+   "scores": [
+    0.5913,
+    0.5609
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 360,
+   "completion_tokens": 19,
+   "latency_s": 6.814
+  },
+  {
+   "id": "en-12",
+   "lang": "en",
+   "question": "Which construction company built the Kuwait Towers?",
+   "gold_answer": "Union Inženjering of Belgrade, Yugoslavia",
+   "gold_doc_ids": [
+    "en-1652111"
+   ],
+   "answer": "The Kuwait Towers were built by Union Inženjering, a construction company from Belgrade, Yugoslavia.",
+   "retrieved_doc_ids": [
+    "en-1652111",
+    "en-1652111",
+    "en-1652111",
+    "en-1652111",
+    "en-33363086"
+   ],
+   "scores": [
+    0.6744,
+    0.638,
+    0.6197,
+    0.6015,
+    0.5569
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 792,
+   "completion_tokens": 23,
+   "latency_s": 16.258
+  },
+  {
+   "id": "en-13",
+   "lang": "en",
+   "question": "Which animals do Iranians export to the Port of Khasab?",
+   "gold_answer": "Sheep and goats",
+   "gold_doc_ids": [
+    "en-1658322"
+   ],
+   "answer": "Iranians export sheep and goats to the Port of Khasab.",
+   "retrieved_doc_ids": [
+    "en-1658322",
+    "en-1658322"
+   ],
+   "scores": [
+    0.6682,
+    0.5719
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 360,
+   "completion_tokens": 15,
+   "latency_s": 7.259
+  },
+  {
+   "id": "en-14",
+   "lang": "en",
+   "question": "What is the main port on Bahrain Island?",
+   "gold_answer": "Mina Salman",
+   "gold_doc_ids": [
+    "en-17812653"
+   ],
+   "answer": "The main port on Bahrain Island is Mina Salman.",
+   "retrieved_doc_ids": [
+    "en-17812653",
+    "en-17812653",
+    "en-33363071",
+    "en-4973090",
+    "en-17812653"
+   ],
+   "scores": [
+    0.6709,
+    0.6646,
+    0.6518,
+    0.6372,
+    0.6242
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 886,
+   "completion_tokens": 12,
+   "latency_s": 18.567
+  },
+  {
+   "id": "en-15",
+   "lang": "en",
+   "question": "What caused the crash of Gulf Air Flight 771 in Jebel Ali in 1983?",
+   "gold_answer": "A terrorist bomb planted on board by the Abu Nidal Organization",
+   "gold_doc_ids": [
+    "en-1875391"
+   ],
+   "answer": "A terrorist bomb planted onboard the aircraft by the Abu Nidal Organization caused the crash of Gulf Air Flight 771 in Jebel Ali in 1983.",
+   "retrieved_doc_ids": [
+    "en-1875391"
+   ],
+   "scores": [
+    0.6733
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 267,
+   "completion_tokens": 36,
+   "latency_s": 7.139
+  },
+  {
+   "id": "en-16",
+   "lang": "en",
+   "question": "What is the baked kibbeh variation with stuffing between two layers of kibbeh dough called?",
+   "gold_answer": "Kibbeh bil siniyeh",
+   "gold_doc_ids": [
+    "en-1913368"
+   ],
+   "answer": "The baked kibbeh variation with stuffing between two layers of kibbeh dough is called kibbeh bil siniyeh.",
+   "retrieved_doc_ids": [
+    "en-1913368",
+    "en-1913368",
+    "en-1913368",
+    "en-1913368",
+    "en-1913368"
+   ],
+   "scores": [
+    0.742,
+    0.6631,
+    0.6568,
+    0.6291,
+    0.6196
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 1029,
+   "completion_tokens": 28,
+   "latency_s": 21.415
+  },
+  {
+   "id": "en-17",
+   "lang": "en",
+   "question": "Roughly how many people did the 2011 Sohar protests attract at times?",
+   "gold_answer": "An estimated 2,000 people",
+   "gold_doc_ids": [
+    "en-1921981"
+   ],
+   "answer": "The 2011 Sohar protests attracted an estimated 2,000 people at times.",
+   "retrieved_doc_ids": [
+    "en-1921981"
+   ],
+   "scores": [
+    0.5679
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 246,
+   "completion_tokens": 23,
+   "latency_s": 6.991
+  },
+  {
+   "id": "en-18",
+   "lang": "en",
+   "question": "Which Jordanian dessert is made specially for Ramadan?",
+   "gold_answer": "Qatayef",
+   "gold_doc_ids": [
+    "en-20657443"
+   ],
+   "answer": "The Jordanian dessert made specially for Ramadan is qatayef.",
+   "retrieved_doc_ids": [
+    "en-20657443",
+    "en-20657443",
+    "en-20657443",
+    "en-20657443",
+    "en-63747964"
+   ],
+   "scores": [
+    0.6589,
+    0.5973,
+    0.5842,
+    0.5696,
+    0.5672
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 839,
+   "completion_tokens": 15,
+   "latency_s": 17.831
+  },
+  {
+   "id": "en-19",
+   "lang": "en",
+   "question": "Which deity did people in the Dubai area worship before the introduction of Islam?",
+   "gold_answer": "Bajir (or Bajar)",
+   "gold_doc_ids": [
+    "en-211583"
+   ],
+   "answer": "People in the Dubai area worshipped Bajir (or Bajar) before the introduction of Islam.",
+   "retrieved_doc_ids": [
+    "en-211583",
+    "en-211583",
+    "en-211583",
+    "en-211583"
+   ],
+   "scores": [
+    0.636,
+    0.5819,
+    0.5696,
+    0.5658
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 671,
+   "completion_tokens": 22,
+   "latency_s": 14.26
+  },
+  {
+   "id": "en-20",
+   "lang": "en",
+   "question": "What percentage of Al Ain's population are Emirati nationals?",
+   "gold_answer": "30.8%",
+   "gold_doc_ids": [
+    "en-212131"
+   ],
+   "answer": "The percentage of Al Ain's population that are Emirati nationals is 30.8%.",
+   "retrieved_doc_ids": [
+    "en-212131",
+    "en-212131",
+    "en-212131",
+    "en-212131"
+   ],
+   "scores": [
+    0.685,
+    0.6285,
+    0.5555,
+    0.5548
+   ],
+   "hit": true,
+   "correctness": "correct",
+   "groundedness": "supported",
+   "prompt_tokens": 666,
+   "completion_tokens": 21,
+   "latency_s": 11.867
+  }
+ ]
+}

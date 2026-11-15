@@ -1,0 +1,60 @@
+{"id": "msa-01", "lang": "msa", "question": "ما الاسم الذي يُطلق غالباً على البسبوسة في بلاد الشام؟", "gold_answer": "الهريسة", "gold_doc_ids": ["ar-1012795"]}
+{"id": "msa-02", "lang": "msa", "question": "ما المحافظات الأربع التي يربط بينها جبل طحنان؟", "gold_answer": "أحد المسارحة والعارضة والحرث وأبو عريش", "gold_doc_ids": ["ar-10277693"]}
+{"id": "msa-03", "lang": "msa", "question": "ما الطراز المعماري الذي استُلهم في تصميم المشاريع الحديثة داخل وادي صفار؟", "gold_answer": "العمارة النجدية التقليدية", "gold_doc_ids": ["ar-10488858"]}
+{"id": "msa-04", "lang": "msa", "question": "على أي ضفة من وادي حنيفة يقع حي الطريف؟", "gold_answer": "على الضفة الغربية من وادي حنيفة", "gold_doc_ids": ["ar-10488876"]}
+{"id": "msa-05", "lang": "msa", "question": "ما الاسم القديم لوادي الخُمس الذي ذكره الهمداني في كتابه «صفة جزيرة العرب»؟", "gold_answer": "زائرة", "gold_doc_ids": ["ar-1061379"]}
+{"id": "msa-06", "lang": "msa", "question": "كم عاماً يمتد العمل على مشروع تطوير جدة التاريخية؟", "gold_answer": "15 عاماً", "gold_doc_ids": ["ar-1176211"]}
+{"id": "msa-07", "lang": "msa", "question": "كم عدد بوابات المغادرة والقدوم في مطار الأحساء الدولي بعد مشروع التطوير والتوسعة؟", "gold_answer": "10 بوابات", "gold_doc_ids": ["ar-1448336"]}
+{"id": "msa-08", "lang": "msa", "question": "كم مصلياً يتسع له مسجد مطار الملك فهد الدولي؟", "gold_answer": "ألفا مصلٍّ (2000)", "gold_doc_ids": ["ar-164378"]}
+{"id": "msa-09", "lang": "msa", "question": "كم تبلغ مساحة مدينة ينبع الصناعية التي أُسست عام 1975؟", "gold_answer": "185 كيلومتراً مربعاً", "gold_doc_ids": ["ar-16663"]}
+{"id": "msa-10", "lang": "msa", "question": "متى حُررت مدينة الخفجي من القوات العراقية؟", "gold_answer": "في 1 فبراير 1991", "gold_doc_ids": ["ar-170304"]}
+{"id": "msa-11", "lang": "msa", "question": "كم تبلغ مساحة موقع المنطقة الصناعية الجبيل 2؟", "gold_answer": "5500 هكتار", "gold_doc_ids": ["ar-15658"]}
+{"id": "msa-12", "lang": "msa", "question": "من أي جبال ينحدر وادي الشعبة الذي يلتقي بوادي الرمة؟", "gold_answer": "من جبال أجا ورمان وسلمى", "gold_doc_ids": ["ar-151304"]}
+{"id": "msa-13", "lang": "msa", "question": "ما الاسم الذي ذكره محمد المانع لوادي الباطن بسبب غرق الناس والمواشي في سيوله؟", "gold_answer": "وادي الجثث", "gold_doc_ids": ["ar-168253"]}
+{"id": "msa-14", "lang": "msa", "question": "ما الاسم التاريخي لجبل طويق؟", "gold_answer": "جبل العارض أو عارض اليمامة", "gold_doc_ids": ["ar-148942"]}
+{"id": "msa-15", "lang": "msa", "question": "ما الغرض من إنشاء قاعدة الملك عبد العزيز الجوية في المنطقة الشرقية؟", "gold_answer": "حماية النطاق الجوي للمملكة وآبار النفط في المنطقة الشرقية", "gold_doc_ids": ["ar-1479885"]}
+{"id": "msa-16", "lang": "msa", "question": "ما الحدث الذي عجّل بانتقال مركز قيادة العمليات الجوية المشتركة إلى قاعدة الأمير سلطان الجوية؟", "gold_answer": "تفجير أبراج الخبر", "gold_doc_ids": ["ar-1215870"]}
+{"id": "msa-17", "lang": "msa", "question": "ما الطبق ذو الأصل الشمال أفريقي الذي يمكن استخدامه كقاعدة للشكشوكة؟", "gold_answer": "المطبوخة", "gold_doc_ids": ["ar-1323319"]}
+{"id": "msa-18", "lang": "msa", "question": "ما أبرز القبائل اليهودية التي سكنت يثرب قبل الإسلام؟", "gold_answer": "بنو قينقاع وبنو قريظة وبنو النضير", "gold_doc_ids": ["ar-10400"]}
+{"id": "msa-19", "lang": "msa", "question": "ماذا كانت تُسمى غرف التفتيش في قنوات عين زبيدة؟", "gold_answer": "الخرزات", "gold_doc_ids": ["ar-1131156"]}
+{"id": "msa-20", "lang": "msa", "question": "ما المستشفى المرجعي في مدينة الباحة الذي تقرر تحويله إلى مستشفى تخصصي؟", "gold_answer": "مستشفى الملك فهد المركزي", "gold_doc_ids": ["ar-11015"]}
+{"id": "gulf-01", "lang": "gulf", "question": "منهي الأسره اللي مسكت الأسياح بعد عهد سلطان مارد؟", "gold_answer": "آل فهيد", "gold_doc_ids": ["ar-100033"]}
+{"id": "gulf-02", "lang": "gulf", "question": "كل كم سنه تجي الفيضانات القويه اللي توصّل موية الأوديه الكبيره في شمال تهامه للبحر الأحمر؟", "gold_answer": "كل ثلاث إلى خمس سنوات", "gold_doc_ids": ["ar-1017313"]}
+{"id": "gulf-03", "lang": "gulf", "question": "ضرما زمان كانت تعتبر البوابه الغربيه لأي إقليم؟", "gold_answer": "إقليم العارض", "gold_doc_ids": ["ar-102345"]}
+{"id": "gulf-04", "lang": "gulf", "question": "في كرواتيا متى يقدمون الورق المحشي حسب عادتهم؟", "gold_answer": "في ليلة رأس السنة", "gold_doc_ids": ["ar-10353422"]}
+{"id": "gulf-05", "lang": "gulf", "question": "وش جزر الخليج العربي اللي تعتبر محطات للطيور المهاجره؟", "gold_answer": "جزر الجريد وكران وأبو علي وجنا", "gold_doc_ids": ["ar-1040976"]}
+{"id": "gulf-06", "lang": "gulf", "question": "وش الوديان اللي كانت مع وادي تبل من أكبر وديان الباديه الغربيه بالعراق؟", "gold_answer": "وادي حوران والغدف والأبيض", "gold_doc_ids": ["ar-10431865"]}
+{"id": "gulf-07", "lang": "gulf", "question": "وش اسم الوعاء الخشبي اللي يدقون فيه حب الهريس؟", "gold_answer": "المنحاز", "gold_doc_ids": ["ar-1063441"]}
+{"id": "gulf-08", "lang": "gulf", "question": "منهو اللي انولد بالطايف وعطوه ولاية العراق وخراسان؟", "gold_answer": "زياد بن أبيه", "gold_doc_ids": ["ar-12584"]}
+{"id": "gulf-09", "lang": "gulf", "question": "منهي الجهه اللي حسمت الخلاف على مكان سوق حباشه؟", "gold_answer": "دارة الملك عبدالعزيز", "gold_doc_ids": ["ar-1271451"]}
+{"id": "gulf-10", "lang": "gulf", "question": "وش الفواكه اللي تنزرع في عسير وتجذب السياح؟", "gold_answer": "التوت والخوخ والمشمش والعنب والرمان", "gold_doc_ids": ["ar-12798"]}
+{"id": "gulf-11", "lang": "gulf", "question": "وش يسمون المطبق اللي ما فيه حشوه في بروناي؟", "gold_answer": "مرتبق كوسونغ", "gold_doc_ids": ["ar-128712"]}
+{"id": "gulf-12", "lang": "gulf", "question": "دومة الجندل معروفه من أيام أي حضاره قديمه؟", "gold_answer": "من أيام الآشوريين", "gold_doc_ids": ["ar-131119"]}
+{"id": "gulf-13", "lang": "gulf", "question": "وادي نعمان مشهور بأي شجر؟", "gold_answer": "شجر الأراك", "gold_doc_ids": ["ar-143153"]}
+{"id": "gulf-14", "lang": "gulf", "question": "وش اسم القصر اللي بنوه آل علي في حايل؟", "gold_answer": "قصر برزان", "gold_doc_ids": ["ar-15883"]}
+{"id": "gulf-15", "lang": "gulf", "question": "وين أول مكان نزلوا فيه بني حنيفه يوم ارتحلوا من الحجاز وعالية نجد؟", "gold_answer": "قارات الحُبل", "gold_doc_ids": ["ar-161393"]}
+{"id": "gulf-16", "lang": "gulf", "question": "وش اسم الجبل اللي في وادي رابغ وتسمّت عليه غزوه من غزوات الرسول؟", "gold_answer": "جبل بحران", "gold_doc_ids": ["ar-1713223"]}
+{"id": "gulf-17", "lang": "gulf", "question": "كم تبعد جامعة الباحه عن محافظة العقيق؟", "gold_answer": "13 كم", "gold_doc_ids": ["ar-171522"]}
+{"id": "gulf-18", "lang": "gulf", "question": "متى وصلت أول رحله دوليه مباشره لمطار القيصومه ومن وين جت؟", "gold_answer": "في 21 مارس 2023 قادمة من دبي", "gold_doc_ids": ["ar-172862"]}
+{"id": "gulf-19", "lang": "gulf", "question": "كم توصل حرارة موية العين الحاره اللي قريب من الداير؟", "gold_answer": "90 درجة مئوية", "gold_doc_ids": ["ar-17457"]}
+{"id": "gulf-20", "lang": "gulf", "question": "أي وزاره تشرف على المدينه الصناعيه في خميس مشيط؟", "gold_answer": "وزارة الصناعة والثروة المعدنية", "gold_doc_ids": ["ar-17452"]}
+{"id": "en-01", "lang": "en", "question": "Which fictional planet was the Liwa desert used to represent in the 2021 film Dune?", "gold_answer": "Arrakis", "gold_doc_ids": ["en-10495875"]}
+{"id": "en-02", "lang": "en", "question": "Since what year has the Dubai Sports Council been working to revitalize Hatta with sports and outdoor activities?", "gold_answer": "Since 2009", "gold_doc_ids": ["en-11015195"]}
+{"id": "en-03", "lang": "en", "question": "What material is the track surface of Yas Marina Circuit made of, and where was it shipped from?", "gold_answer": "Graywacke aggregate from a Bayston Hill quarry in Shropshire, England", "gold_doc_ids": ["en-11169104"]}
+{"id": "en-04", "lang": "en", "question": "Besides Ibra's souq, which other souq is named as one of the most important in Oman?", "gold_answer": "Muttrah", "gold_doc_ids": ["en-12447128"]}
+{"id": "en-05", "lang": "en", "question": "Which body announced the regional dishes of Saudi Arabia's 13 regions in January 2024?", "gold_answer": "The Saudi Culinary Commission, under the Ministry of Culture", "gold_doc_ids": ["en-12842989"]}
+{"id": "en-06", "lang": "en", "question": "In what year were the Hawar Islands listed as a Ramsar site?", "gold_answer": "1997", "gold_doc_ids": ["en-13667"]}
+{"id": "en-07", "lang": "en", "question": "How heavy is the legendary rock in the Az al Qadim mosque in Manah?", "gold_answer": "100 kg", "gold_doc_ids": ["en-13743793"]}
+{"id": "en-08", "lang": "en", "question": "Which channel separates Bubiyan Island from the Kuwaiti mainland?", "gold_answer": "The Al-Sabiyyah channel", "gold_doc_ids": ["en-1550688"]}
+{"id": "en-09", "lang": "en", "question": "Dhaid is bisected by a road running from Sharjah to which town in the foothills of the Hajar Mountains?", "gold_answer": "Masafi", "gold_doc_ids": ["en-1585674"]}
+{"id": "en-10", "lang": "en", "question": "When was the Dubai Gold Souk informally formed?", "gold_answer": "In the early 1900s", "gold_doc_ids": ["en-16267884"]}
+{"id": "en-11", "lang": "en", "question": "By what year had a falafel shop opened in Beirut?", "gold_answer": "By 1933", "gold_doc_ids": ["en-164311"]}
+{"id": "en-12", "lang": "en", "question": "Which construction company built the Kuwait Towers?", "gold_answer": "Union Inženjering of Belgrade, Yugoslavia", "gold_doc_ids": ["en-1652111"]}
+{"id": "en-13", "lang": "en", "question": "Which animals do Iranians export to the Port of Khasab?", "gold_answer": "Sheep and goats", "gold_doc_ids": ["en-1658322"]}
+{"id": "en-14", "lang": "en", "question": "What is the main port on Bahrain Island?", "gold_answer": "Mina Salman", "gold_doc_ids": ["en-17812653"]}
+{"id": "en-15", "lang": "en", "question": "What caused the crash of Gulf Air Flight 771 in Jebel Ali in 1983?", "gold_answer": "A terrorist bomb planted on board by the Abu Nidal Organization", "gold_doc_ids": ["en-1875391"]}
+{"id": "en-16", "lang": "en", "question": "What is the baked kibbeh variation with stuffing between two layers of kibbeh dough called?", "gold_answer": "Kibbeh bil siniyeh", "gold_doc_ids": ["en-1913368"]}
+{"id": "en-17", "lang": "en", "question": "Roughly how many people did the 2011 Sohar protests attract at times?", "gold_answer": "An estimated 2,000 people", "gold_doc_ids": ["en-1921981"]}
+{"id": "en-18", "lang": "en", "question": "Which Jordanian dessert is made specially for Ramadan?", "gold_answer": "Qatayef", "gold_doc_ids": ["en-20657443"]}
+{"id": "en-19", "lang": "en", "question": "Which deity did people in the Dubai area worship before the introduction of Islam?", "gold_answer": "Bajir (or Bajar)", "gold_doc_ids": ["en-211583"]}
+{"id": "en-20", "lang": "en", "question": "What percentage of Al Ain's population are Emirati nationals?", "gold_answer": "30.8%", "gold_doc_ids": ["en-212131"]}

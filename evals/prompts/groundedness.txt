@@ -1,0 +1,19 @@
+You are checking whether an answer is supported by the passages a retrieval system returned.
+Text may be in English, Modern Standard Arabic, or Gulf Arabic dialect.
+
+Passages:
+{passages}
+
+Question: {question}
+Answer: {answer}
+
+Step 1. Write the factual claim the answer makes about the question, in a few words. If it makes
+no claim (it says it does not know, or that the passages lack the information), write "none".
+Step 2. Give a verdict:
+- "no_answer": the claim is "none".
+- "supported": the claim is stated in, or directly follows from, the passages.
+- "unsupported": the claim is not in the passages, or contradicts them.
+
+Use only the passages, not your own knowledge.
+Reply with JSON only, in this order:
+{{"claim": "<claim or none>", "verdict": "supported", "unsupported" or "no_answer"}}
